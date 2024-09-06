@@ -1,0 +1,459 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+}
+
+body,
+input,
+button {
+    font-family: "Poppins", sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+aside {
+    border-right: 1px solid rgb(231, 231, 231);
+    width: fit-content;
+    height: 100%;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    transition: all .222s ease;
+}
+
+aside>.options_aside_items>button>span {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: all .222s cubic-bezier(0.39, 0.575, 0.565, 1);
+    letter-spacing: -20px;
+}
+
+aside>h1 {
+    font-size: 2rem;
+    color: rgb(50, 50, 50);
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: all .222s cubic-bezier(0.39, 0.575, 0.565, 1);
+    letter-spacing: -20px;
+}
+
+aside:hover h1 {
+    width: 100%;
+    opacity: 1;
+    height: fit-content;
+    transition: all .222s cubic-bezier(0.39, 0.575, 0.565, 1);
+    letter-spacing: 0px;
+}
+
+aside:hover .options_aside_items>button>span {
+    width: 100%;
+    opacity: 1;
+    height: fit-content;
+    transition: all .222s cubic-bezier(0.39, 0.575, 0.565, 1);
+    letter-spacing: 0px;
+}
+
+aside > .options_aside_items:nth-child(2){
+    flex-grow: 1;
+}
+
+.right-aside {
+    min-width: fit-content;
+    border: none;
+    border-left: 1px solid rgb(231, 231, 231);
+}
+
+main {
+    flex-grow: 1;
+    overflow-y: scroll;
+    transition: all .333s ease;
+    scroll-behavior: smooth;
+}
+
+main::-webkit-scrollbar,
+.temperature_container_all_cards::-webkit-scrollbar,
+.all_humidity_cards_container::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+main::-webkit-scrollbar-track,
+.temperature_container_all_cards::-webkit-scrollbar-track,
+.all_humidity_cards_container::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+main::-webkit-scrollbar-thumb,
+.temperature_container_all_cards::-webkit-scrollbar-thumb,
+.all_humidity_cards_container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(61, 50, 209, 0.863);
+}
+
+.options_aside_items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.options_aside_items button {
+    background: none;
+    border: none;
+    text-align: start;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 8px;
+    color: rgb(66, 66, 66);
+    font-weight: 500;
+    letter-spacing: .4px;
+    transition: all .222s ease;
+    position: relative;
+    border: 1.7px solid rgb(238, 238, 238);
+}
+
+.options_aside_items button.active {
+    background-color: rgba(61, 50, 209, 0.863);
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+
+}
+
+.options_aside_items button:hover {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+
+.options_aside_items button::before {
+    content: "";
+    z-index: -1;
+    width: 0;
+    background-color: rgba(61, 50, 209, 0.863);
+    height: 100%;
+    position: absolute;
+    left: 0;
+    transition: all .444s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.options_aside_items button:hover:before {
+    width: 100%;
+}
+
+header {
+    border-bottom: 1px solid rgb(228, 228, 228);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    text-transform: capitalize;
+}
+
+section {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+section h1 {
+    font-size: 1.8rem;
+    color: rgb(31, 31, 31);
+}
+
+.main_cards_information {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+
+}
+
+.dateTimeHeader h1 {
+    font-size: 1.2rem;
+}
+
+.dateTimeHeader>.dayWeek,
+.month:nth-child(2),
+.day,
+.timeToday {
+    font-size: 1rem;
+    color: darkgrey;
+}
+
+.search_header_data input {
+    border: 1.8px solid rgb(221, 221, 221);
+    padding: 8px 16px;
+    border-radius: 12px;
+    width: 300px;
+    font-size: 1rem;
+}
+
+.search_header_data input:focus {
+    outline: none;
+}
+
+.search_header_data input::placeholder {
+    font-weight: 600;
+    color: rgb(194, 194, 194);
+}
+
+.card {
+    border: 1px solid rgb(223, 223, 223);
+    width: 300px;
+    display: flex;
+    align-items: center;
+    padding: 16px 16px;
+    gap: 16px;
+    transition: all .111s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.card:hover,
+.temperature_card:hover,
+.humidity_card:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+    background-color: rgb(250, 250, 250);
+}
+
+.card svg {
+    width: 50px;
+    height: 60px;
+    background-color: rgb(255, 136, 38);
+    padding: 4px;
+    color: white;
+    border-radius: 8px;
+}
+
+.card .comparation_with_lastValue {
+    flex-grow: 1;
+    text-align: end;
+    color: green;
+}
+
+.data_sensor_card {
+    color: rgb(51, 51, 51);
+}
+
+.data_sensor_card p {
+    font-size: .9rem;
+}
+
+.dataBySensor h1 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.sensors_right_side {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card_info_quantity_sensor {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(226, 226, 226);
+    padding: 8px 16px;
+    gap: 48px;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all .223s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.card_info_quantity_sensor:hover {
+    transform: scale(.95);
+}
+
+.card_info_quantity_sensor:hover svg {
+    color: black;
+}
+
+.card_info_quantity_sensor>div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.card_info_quantity_sensor svg {
+    color: darkgrey;
+    transition: color .49111s ease;
+}
+
+.card_info_quantity_sensor .quantity_sensor {
+    background-color: rgb(118, 44, 255);
+    color: white;
+    width: 20px;
+    height: 20px;
+    display: grid;
+    place-content: center;
+    padding: 16px;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.controls_access_preference {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card_control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 8px 16px;
+    background-color: rgb(245, 245, 245);
+    border-left: 2px solid darkgray;
+    height: 60px;
+}
+
+.on_off {
+    padding: 8px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    font-size: 1rem;
+    display: grid;
+    place-content: center;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    transition: transform .111s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.on_off:active {
+    transform: scale(.9);
+}
+
+.control_inputpanel .plus_button,
+.minus_button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    background: none;
+}
+
+.control_inputpanel input {
+    width: 30px;
+    height: 30px;
+    border: none;
+    text-align: center;
+    background: none;
+}
+
+.control_inputpanel input:focus {
+    outline: none;
+}
+
+.control_energy {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.control_energy button {
+    padding: 4px 8px;
+    border: none;
+    background: none;
+    transition: all .222777s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-color: rgb(255, 150, 52);
+    font-size: .95rem;
+    color: white;
+    max-width: fit-content;
+}
+
+.control_energy button:nth-child(2) {
+    background-color: rgb(0, 212, 64);
+}
+
+
+.control_energy button:active {
+    transform: scale(.9);
+}
+
+.temperature_card,
+.humidity_card {
+    border: 1px solid rgb(226, 226, 226);
+    width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    transition: all .111s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.temperature_card,
+.humidity_card {
+    color: rgb(22, 22, 22);
+}
+
+.data_content_temp {
+    flex-grow: 1;
+}
+
+.temperature_container_all_cards,
+.all_humidity_cards_container,
+.all_presencie_cards_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    scroll-behavior: smooth;
+    padding: 16px 8px;
+}
+
+.temperature_card svg,
+.humidity_card svg {
+    width: 50px;
+    height: 60px;
+    padding: 8px;
+    background-color: rgb(255, 136, 38);
+    color: white;
+    border-radius: 8px;
+}
+
+.temperature_card.temperature_max svg {
+    background-color: rgb(255, 10, 10);
+}
+
+.temperature_card.temperature_min svg {
+    background-color: rgb(65, 141, 255);
+}
+
+
+.temperature_card_container_top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 2px solid rgb(235, 235, 235);
+    padding: 8px 0px;
+}
+
